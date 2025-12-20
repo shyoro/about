@@ -8,6 +8,13 @@
       "when": 1766050773659,
       "tag": "0000_long_loa",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1766058113503,
+      "tag": "0001_whole_apocalypse",
+      "breakpoints": true
     }
   ]
 }

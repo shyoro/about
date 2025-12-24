@@ -22,24 +22,22 @@ export class ProfileRepository {
         return null;
       }
 
-      // Ensure bio is always an array (JSONB might return different formats)
-      let bioArray: string[] = [];
+      // Handle bio as a string, supporting both direct string and array formats
+      let bio = '';
+      
+      if (typeof profileData.bio === 'string') {
+        bio = profileData.bio;
+      }
+
       if (Array.isArray(profileData.bio)) {
-        bioArray = profileData.bio;
-      } else if (typeof profileData.bio === 'string') {
-        try {
-          const parsed = JSON.parse(profileData.bio);
-          bioArray = Array.isArray(parsed) ? parsed : [];
-        } catch {
-          bioArray = [];
-        }
+        bio = profileData.bio.join('\n\n');
       }
 
       return {
         id: profileData.id,
         name: profileData.name,
         title: profileData.title,
-        bio: bioArray,
+        bio,
         profileImageUrl: profileData.profileImageUrl,
         createdAt: profileData.createdAt,
         updatedAt: profileData.updatedAt,

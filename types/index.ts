@@ -7,7 +7,7 @@ export interface Profile {
   id: string;
   name: string;
   title: string;
-  bio: string[];
+  bio: string;
   profileImageUrl: string | null;
   createdAt: Date;
   updatedAt: Date;

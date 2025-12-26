@@ -31,7 +31,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={textareaId}
           className={cn(
             'w-full px-4 py-3 rounded-lg glass text-[var(--color-text-primary)] placeholder:text-[var(--color-text-light)]',
-            'focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-2)]/50 focus:border-[var(--color-accent-2)]',
+            'focus:outline-none focus:ring-2 focus:ring-[var(--color-button-purple)]/50 focus:border-[var(--color-button-purple)]',
             'transition-all duration-200 resize-none',
             error && 'border-red-300 focus:ring-red-400',
             className

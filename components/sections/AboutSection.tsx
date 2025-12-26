@@ -54,7 +54,7 @@ export function AboutSection({ profile, skills }: AboutSectionProps) {
                   {firstRowSkills.map((skill) => (
                     <span
                       key={skill.id}
-                      className="px-6 py-3 glass rounded-full text-base font-medium text-[var(--color-text-primary)] hover:border-[var(--color-accent-2)] transition-all duration-300"
+                      className="px-6 py-3 glass rounded-full text-base font-medium text-[var(--color-text-primary)] hover:border-[var(--color-accent-1)] transition-all duration-300"
                     >
                       {skill.name}
                     </span>
@@ -64,7 +64,7 @@ export function AboutSection({ profile, skills }: AboutSectionProps) {
                   {firstRowSkills.map((skill) => (
                     <span
                       key={`${skill.id}-copy`}
-                      className="px-6 py-3 glass rounded-full text-base font-medium text-[var(--color-text-primary)] hover:border-[var(--color-accent-2)] transition-all duration-300"
+                      className="px-6 py-3 glass rounded-full text-base font-medium text-[var(--color-text-primary)] hover:border-[var(--color-accent-1)] transition-all duration-300"
                     >
                       {skill.name}
                     </span>
@@ -77,7 +77,7 @@ export function AboutSection({ profile, skills }: AboutSectionProps) {
                   {secondRowSkills.map((skill) => (
                     <span
                       key={skill.id}
-                      className="px-6 py-3 glass rounded-full text-base font-medium text-[var(--color-text-primary)] hover:border-[var(--color-accent-2)] transition-all duration-300"
+                      className="px-6 py-3 glass rounded-full text-base font-medium text-[var(--color-text-primary)] hover:border-[var(--color-accent-1)] transition-all duration-300"
                     >
                       {skill.name}
                     </span>
@@ -87,7 +87,7 @@ export function AboutSection({ profile, skills }: AboutSectionProps) {
                   {secondRowSkills.map((skill) => (
                     <span
                       key={`${skill.id}-copy`}
-                      className="px-6 py-3 glass rounded-full text-base font-medium text-[var(--color-text-primary)] hover:border-[var(--color-accent-2)] transition-all duration-300"
+                      className="px-6 py-3 glass rounded-full text-base font-medium text-[var(--color-text-primary)] hover:border-[var(--color-accent-1)] transition-all duration-300"
                     >
                       {skill.name}
                     </span>

@@ -23,7 +23,7 @@ export function ProfileImage({ src, alt, className = '' }: ProfileImageProps) {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className={`relative inline-block align-middle ${className}`}
     >
-      <div className="relative w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl ring-2 ring-[var(--color-accent-1)]/30">
+      <div className="relative w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl ring-2 ring-[var(--color-button-purple)]/20">
         <Image
           src={src}
           alt={alt}

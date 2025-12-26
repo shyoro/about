@@ -22,8 +22,8 @@ export function HeroSection({ profile }: HeroSectionProps) {
       <div className="max-w-5xl w-full text-center relative z-20">
         <ScrollReveal delay={0.2}>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight mb-8 text-[var(--color-text-primary)] flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
-            <span>Hi, I&#39;m</span>
             <ProfileImage src={profileImageUrl} alt={name} />
+            <span>Hi, I&#39;m</span>
             <span className="gradient-text">
               {name}
             </span>
@@ -38,7 +38,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="#about"
-              className="px-8 py-4 bg-[var(--color-accent-2)] text-white rounded-full font-medium hover:bg-[#E600E6] transition-all duration-200 shadow-md hover:shadow-lg"
+              className="px-8 py-4 bg-[var(--color-button-purple)] text-white rounded-full font-medium hover:bg-[var(--color-button-purple-hover)] transition-all duration-200 shadow-md hover:shadow-lg"
             >
               Learn More
             </a>

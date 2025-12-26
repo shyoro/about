@@ -43,12 +43,12 @@ export function BackgroundOrbs() {
     <>
       <div
         ref={orb1Ref}
-        className="fixed top-[-200px] left-[-100px] w-[80vw] h-[80vw] max-w-[1200px] max-h-[1200px] rounded-full blur-[120px] opacity-70 z-[-1] will-change-transform mix-blend-multiply bg-[radial-gradient(circle,#ff9a9e_0%,#fecfef_100%)]"
+        className="fixed top-[-200px] left-[-100px] w-[80vw] h-[80vw] max-w-[1200px] max-h-[1200px] rounded-full blur-[120px] opacity-40 z-[-1] will-change-transform mix-blend-multiply bg-[radial-gradient(circle,#E9D5FF_0%,#F3E8FF_100%)]"
         aria-hidden="true"
       />
       <div
         ref={orb2Ref}
-        className="fixed top-[20%] right-[-100px] w-[90vw] h-[90vw] max-w-[1400px] max-h-[1400px] rounded-full blur-[120px] opacity-70 z-[-1] will-change-transform mix-blend-multiply bg-[radial-gradient(circle,#a18cd1_0%,#fbc2eb_100%)]"
+        className="fixed top-[20%] right-[-100px] w-[90vw] h-[90vw] max-w-[1400px] max-h-[1400px] rounded-full blur-[120px] opacity-40 z-[-1] will-change-transform mix-blend-multiply bg-[radial-gradient(circle,#FED7AA_0%,#FFEDD5_100%)]"
         aria-hidden="true"
       />
     </>

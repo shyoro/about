@@ -1,29 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  /* Vibrant Color System - Cream, White, Gray, Fuchsia */
-  --color-primary: #FFF8F0;        /* Cream - Main background */
-  --color-secondary: #f0f0f0;      /* Light Gray - Accents */
+  /* Pastel Color System - Cream, Purple, Orange */
+  --color-primary: #FEFBF3;        /* Soft Cream - Main background */
+  --color-secondary: #F9F5F0;      /* Pastel Cream - Accents */
   --color-tertiary: #FFFFFF;        /* White - Highlights */
-  --color-accent-1: #E8E8E8;        /* Medium Gray - Subtle accents */
-  --color-accent-2: #935c93;        /* Fuchsia - Vibrant touches */
+  --color-accent-1: #E9D5FF;        /* Pastel Purple - Subtle accents */
+  --color-accent-2: #7c077c;        /* Pastel Orange - Subtle accents */
+
+  /* Strong Colors for Buttons */
+  --color-button-purple: #7c077c;   /* Strong Purple - Primary buttons */
+  --color-button-orange: #F97316;   /* Strong Orange - Secondary buttons */
+  --color-button-purple-hover: #9f059f;  /* Darker Purple - Hover */
+  --color-button-orange-hover: #EA580C;   /* Darker Orange - Hover */
 
   /* Text Colors */
   --color-text-primary: #2A2A2A;    /* Dark Gray - Readable */
   --color-text-secondary: #4A4A4A;  /* Medium Gray - Secondary text */
   --color-text-light: #6B6B6B;       /* Light Gray - Tertiary text */
 
-  /* Section Gradient Colors - Each section has its own gradient */
-  --gradient-hero-1: #FFF8F0;        /* Cream */
-  --gradient-hero-2: #FFFFFF;        /* White */
-  --gradient-about-1: #FFFFFF;       /* White */
-  --gradient-about-2: #E8E8E8;       /* Gray */
-  --gradient-experience-1: #E8E8E8;  /* Gray */
-  --gradient-experience-2: #F0F0F0;  /* Light Gray */
-  --gradient-education-1: #F0F0F0;   /* Light Gray */
-  --gradient-education-2: #FFF8F0;   /* Cream */
-  --gradient-contact-1: #FFF8F0;     /* Cream */
-  --gradient-contact-2: #FFE0FF;     /* Light Fuchsia */
+  /* Section Gradient Colors - Pastel transitions */
+  --gradient-hero-1: #FEFBF3;        /* Soft Cream */
+  --gradient-hero-2: #F9F5F0;        /* Pastel Cream */
+  --gradient-about-1: #F9F5F0;       /* Pastel Cream */
+  --gradient-about-2: #FFFFFF;       /* White */
+  --gradient-experience-1: #FFFFFF;  /* White */
+  --gradient-experience-2: #FEFBF3;  /* Soft Cream */
+  --gradient-education-1: #FEFBF3;   /* Soft Cream */
+  --gradient-education-2: #F9F5F0;  /* Pastel Cream */
+  --gradient-contact-1: #F9F5F0;    /* Pastel Cream */
+  --gradient-contact-2: #FEFBF3;    /* Soft Cream */
 
   /* Legacy variables for compatibility */
   --background: var(--color-primary);
@@ -31,8 +37,8 @@
 
   /* Spacing & Effects */
   --parallax-speed: 0.5;
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-soft: 0 4px 20px rgba(124, 58, 237, 0.06);
+  --shadow-medium: 0 8px 30px rgba(124, 58, 237, 0.08);
 }
 
 @theme inline {
@@ -89,19 +95,19 @@ body {
   }
 }
 
-/* Vibrant gradient text effect */
+/* Pastel gradient text effect - Purple to Orange */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-accent-2), var(--color-text-primary));
+  background: linear-gradient(135deg, var(--color-button-purple), var(--color-button-orange));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(233, 213, 255, 0.2);
   box-shadow: var(--shadow-soft);
 }
 

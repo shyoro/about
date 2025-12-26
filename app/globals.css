@@ -37,8 +37,9 @@
 
   /* Spacing & Effects */
   --parallax-speed: 0.5;
-  --shadow-soft: 0 4px 20px rgba(124, 58, 237, 0.06);
-  --shadow-medium: 0 8px 30px rgba(124, 58, 237, 0.08);
+  --shadow-soft: 0 4px 20px rgba(124, 7, 124, 0.12);
+  --shadow-medium: 0 8px 30px rgba(124, 7, 124, 0.15);
+  --shadow-glass: 0 8px 32px rgba(124, 7, 124, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 @theme inline {
@@ -104,11 +105,11 @@ body {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(233, 213, 255, 0.2);
-  box-shadow: var(--shadow-soft);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1.5px solid rgba(233, 213, 255, 0.2);
+  box-shadow: var(--shadow-glass);
 }
 
 @utility hover-pause {

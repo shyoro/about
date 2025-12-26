@@ -20,11 +20,11 @@ export function BackgroundOrbs() {
 
       window.requestAnimationFrame(() => {
         if (orb1Ref.current) {
-          orb1Ref.current.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`;
+          orb1Ref.current.style.transform = `translate3d(0, ${scrollY * 0.4}px, 0)`;
         }
         
         if (orb2Ref.current) {
-          orb2Ref.current.style.transform = `translate3d(0, -${scrollY * 0.3}px, 0)`;
+          orb2Ref.current.style.transform = `translate3d(0, -${scrollY * 0.4}px, 0)`;
         }
       });
     };
@@ -43,12 +43,12 @@ export function BackgroundOrbs() {
     <>
       <div
         ref={orb1Ref}
-        className="fixed top-[-200px] left-[-100px] w-[80vw] h-[80vw] max-w-[1200px] max-h-[1200px] rounded-full blur-[120px] opacity-40 z-[-1] will-change-transform mix-blend-multiply bg-[radial-gradient(circle,#E9D5FF_0%,#F3E8FF_100%)]"
+        className="fixed top-[-200px] left-[-100px] w-[80vw] h-[80vw] max-w-[1200px] max-h-[1200px] rounded-full blur-[120px] opacity-50 z-[-1] will-change-transform mix-blend-multiply bg-[radial-gradient(circle,#E9D5FF_0%,#F3E8FF_100%)]"
         aria-hidden="true"
       />
       <div
         ref={orb2Ref}
-        className="fixed top-[20%] right-[-100px] w-[90vw] h-[90vw] max-w-[1400px] max-h-[1400px] rounded-full blur-[120px] opacity-40 z-[-1] will-change-transform mix-blend-multiply bg-[radial-gradient(circle,#FED7AA_0%,#FFEDD5_100%)]"
+        className="fixed top-[20%] right-[-100px] w-[90vw] h-[90vw] max-w-[1400px] max-h-[1400px] rounded-full blur-[120px] opacity-50 z-[-1] will-change-transform mix-blend-multiply bg-[radial-gradient(circle,#FED7AA_0%,#FFEDD5_100%)]"
         aria-hidden="true"
       />
     </>

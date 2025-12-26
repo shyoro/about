@@ -48,7 +48,7 @@ export function AboutSection({ profile, skills }: AboutSectionProps) {
               Skills & Technologies
             </h3>
 
-            <div className="relative py-4 overflow-hidden mask-marquee">
+            <div className="relative py-4 overflow-hidden mask-marquee w-[100vw] ml-[calc(50%-50vw)]">
               <div className="flex w-max animate-marquee hover-pause">
                 <div className="flex gap-4 pr-4">
                   {firstRowSkills.map((skill) => (

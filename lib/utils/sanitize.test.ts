@@ -58,34 +58,37 @@ describe('sanitizeEmail', () => {
 });
 
 describe('sanitizeHtml', () => {
-  it('should remove dangerous scripts', () => {
-    const result = sanitizeHtml('<script>alert("xss")</script><p>Safe</p>');
+  it('should remove dangerous scripts', async () => {
+    const result = await sanitizeHtml('<script>alert("xss")</script><p>Safe</p>');
     expect(result).not.toContain('<script>');
     expect(result).toContain('Safe');
   });
 
-  it('should allow safe HTML tags', () => {
-    const result = sanitizeHtml('<p>Hello</p><strong>World</strong>');
+  it('should allow safe HTML tags', async () => {
+    const result = await sanitizeHtml('<p>Hello</p><strong>World</strong>');
     expect(result).toContain('<p>');
     expect(result).toContain('<strong>');
   });
 
-  it('should remove dangerous attributes', () => {
-    const result = sanitizeHtml('<p onclick="alert(1)">Test</p>');
+  it('should remove dangerous attributes', async () => {
+    const result = await sanitizeHtml('<p onclick="alert(1)">Test</p>');
     expect(result).not.toContain('onclick');
   });
 
-  it('should handle empty strings', () => {
-    expect(sanitizeHtml('')).toBe('');
+  it('should handle empty strings', async () => {
+    const result = await sanitizeHtml('');
+    expect(result).toBe('');
   });
 
-  it('should handle non-string inputs', () => {
-    expect(sanitizeHtml(null as unknown as string)).toBe('');
-    expect(sanitizeHtml(undefined as unknown as string)).toBe('');
+  it('should handle non-string inputs', async () => {
+    const result1 = await sanitizeHtml(null as unknown as string);
+    expect(result1).toBe('');
+    const result2 = await sanitizeHtml(undefined as unknown as string);
+    expect(result2).toBe('');
   });
 
-  it('should preserve line breaks as br tags', () => {
-    const result = sanitizeHtml('<p>Line 1<br>Line 2</p>');
+  it('should preserve line breaks as br tags', async () => {
+    const result = await sanitizeHtml('<p>Line 1<br>Line 2</p>');
     expect(result).toContain('<br>');
   });
 });

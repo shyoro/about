@@ -1,4 +1,3 @@
-import DOMPurify from 'isomorphic-dompurify';
 import validator from 'validator';
 
 /**
@@ -36,13 +35,16 @@ export function sanitizeEmail(email: string): string {
 
 /**
  * Sanitizes HTML content for safe use in email templates
+ * Uses dynamic import to avoid bundling jsdom in serverless environments
  * @param html - The HTML string to sanitize
- * @returns Sanitized HTML string
+ * @returns Promise resolving to sanitized HTML string
  */
-export function sanitizeHtml(html: string): string {
+export async function sanitizeHtml(html: string): Promise<string> {
   if (!html) {
     return '';
   }
+
+  const DOMPurify = (await import('isomorphic-dompurify')).default;
 
   return DOMPurify.sanitize(html, {
     ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'h1', 'h2', 'h3', 'ul', 'ol', 'li'],

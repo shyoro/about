@@ -47,12 +47,12 @@ export function resend(): Resend {
 /**
  * Creates an HTML email template for contact form notifications
  * @param data - Contact form submission data
- * @returns Sanitized HTML email template
+ * @returns Promise resolving to sanitized HTML email template
  */
-function createContactEmailTemplate(data: ContactNotificationData): string {
-  const sanitizedMessage = sanitizeHtml(data.message.replace(/\n/g, '<br>'));
-  const sanitizedName = sanitizeHtml(data.name);
-  const sanitizedEmail = sanitizeHtml(data.email);
+async function createContactEmailTemplate(data: ContactNotificationData): Promise<string> {
+  const sanitizedMessage = await sanitizeHtml(data.message.replace(/\n/g, '<br>'));
+  const sanitizedName = await sanitizeHtml(data.name);
+  const sanitizedEmail = await sanitizeHtml(data.email);
 
   return `
     <h2>New Contact Form Submission</h2>
@@ -75,7 +75,7 @@ export async function sendContactNotification(
 ): Promise<void> {
   try {
     const resendClient = resend();
-    const htmlContent = createContactEmailTemplate(data);
+    const htmlContent = await createContactEmailTemplate(data);
 
     const result = await resendClient.emails.send({
       from: config.from,

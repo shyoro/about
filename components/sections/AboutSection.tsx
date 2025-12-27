@@ -26,7 +26,7 @@ export function AboutSection({ profile, skills }: AboutSectionProps) {
   const secondRowSkills = skills.slice(midPoint);
 
   return (
-    <section id="about" className="relative min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24 py-24">
+    <section id="about" className="relative min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24 py-16">
       <div className="max-w-4xl w-full relative z-10">
         <ScrollReveal>
           <h2 className="text-4xl md:text-6xl font-semibold tracking-tight mb-12 text-[var(--color-text-primary)]">
@@ -35,7 +35,7 @@ export function AboutSection({ profile, skills }: AboutSectionProps) {
         </ScrollReveal>
 
         <ScrollReveal delay={0.3}>
-          <div className="glass p-8 md:p-10 rounded-2xl mb-20">
+          <div className="glass p-8 md:p-10 rounded-2xl mb-20 space-y-4">
             {bioParagraphs.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
             ))}

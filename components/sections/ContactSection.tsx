@@ -66,7 +66,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24 py-24">
+    <section id="contact" className="relative min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24 py-16">
       <div className="max-w-2xl w-full relative z-10">
         <ScrollReveal>
           <h2 className="text-4xl md:text-6xl font-semibold tracking-tight mb-6 text-[var(--color-text-primary)]">

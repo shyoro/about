@@ -27,7 +27,7 @@ interface ExperienceSectionProps {
  */
 export function ExperienceSection({ workExperience }: ExperienceSectionProps) {
   return (
-    <section id="experience" className="relative min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24 py-24">
+    <section id="experience" className="relative min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24 py-16">
       <div className="max-w-5xl w-full relative z-10">
         <ScrollReveal>
           <h2 className="text-4xl md:text-6xl font-semibold tracking-tight mb-12 text-[var(--color-text-primary)]">

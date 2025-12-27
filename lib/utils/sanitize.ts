@@ -34,20 +34,15 @@ export function sanitizeEmail(email: string): string {
 }
 
 /**
- * Sanitizes HTML content for safe use in email templates
- * Uses dynamic import to avoid bundling jsdom in serverless environments
+ * Sanitizes HTML content by escaping HTML entities
+ * Uses validator.escape() to prevent XSS attacks
  * @param html - The HTML string to sanitize
- * @returns Promise resolving to sanitized HTML string
+ * @returns Escaped HTML string safe for use in email templates
  */
-export async function sanitizeHtml(html: string): Promise<string> {
+export function sanitizeHtml(html: string): string {
   if (!html) {
     return '';
   }
 
-  const DOMPurify = (await import('isomorphic-dompurify')).default;
-
-  return DOMPurify.sanitize(html, {
-    ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'h1', 'h2', 'h3', 'ul', 'ol', 'li'],
-    ALLOWED_ATTR: [],
-  });
+  return validator.escape(html);
 }

@@ -47,19 +47,23 @@ export function resend(): Resend {
 /**
  * Creates an HTML email template for contact form notifications
  * @param data - Contact form submission data
- * @returns Promise resolving to sanitized HTML email template
+ * @returns Sanitized HTML email template
  */
-async function createContactEmailTemplate(data: ContactNotificationData): Promise<string> {
-  const sanitizedMessage = await sanitizeHtml(data.message.replace(/\n/g, '<br>'));
-  const sanitizedName = await sanitizeHtml(data.name);
-  const sanitizedEmail = await sanitizeHtml(data.email);
+function createContactEmailTemplate(data: ContactNotificationData): string {
+  // Escape all user input first
+  const sanitizedMessage = sanitizeHtml(data.message);
+  const sanitizedName = sanitizeHtml(data.name);
+  const sanitizedEmail = sanitizeHtml(data.email);
+
+  // Convert newlines to <br> tags after escaping (safe since content is already escaped)
+  const messageWithBreaks = sanitizedMessage.replace(/\n/g, '<br>');
 
   return `
     <h2>New Contact Form Submission</h2>
     <p><strong>Name:</strong> ${sanitizedName}</p>
     <p><strong>Email:</strong> ${sanitizedEmail}</p>
     <p><strong>Message:</strong></p>
-    <p>${sanitizedMessage}</p>
+    <p>${messageWithBreaks}</p>
   `;
 }
 
@@ -75,7 +79,7 @@ export async function sendContactNotification(
 ): Promise<void> {
   try {
     const resendClient = resend();
-    const htmlContent = await createContactEmailTemplate(data);
+    const htmlContent = createContactEmailTemplate(data);
 
     const result = await resendClient.emails.send({
       from: config.from,

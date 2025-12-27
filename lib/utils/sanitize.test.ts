@@ -58,37 +58,40 @@ describe('sanitizeEmail', () => {
 });
 
 describe('sanitizeHtml', () => {
-  it('should remove dangerous scripts', async () => {
-    const result = await sanitizeHtml('<script>alert("xss")</script><p>Safe</p>');
+  it('should escape dangerous scripts', () => {
+    const result = sanitizeHtml('<script>alert("xss")</script><p>Safe</p>');
+    expect(result).toContain('&lt;script&gt;');
+    expect(result).toContain('&lt;p&gt;');
     expect(result).not.toContain('<script>');
-    expect(result).toContain('Safe');
   });
 
-  it('should allow safe HTML tags', async () => {
-    const result = await sanitizeHtml('<p>Hello</p><strong>World</strong>');
-    expect(result).toContain('<p>');
-    expect(result).toContain('<strong>');
+  it('should escape all HTML tags', () => {
+    const result = sanitizeHtml('<p>Hello</p><strong>World</strong>');
+    expect(result).toContain('&lt;p&gt;');
+    expect(result).toContain('&lt;strong&gt;');
+    expect(result).not.toContain('<p>');
   });
 
-  it('should remove dangerous attributes', async () => {
-    const result = await sanitizeHtml('<p onclick="alert(1)">Test</p>');
-    expect(result).not.toContain('onclick');
+  it('should escape dangerous attributes', () => {
+    const result = sanitizeHtml('<p onclick="alert(1)">Test</p>');
+    expect(result).toContain('&lt;p');
+    expect(result).toContain('onclick');
+    expect(result).not.toContain('<p onclick');
   });
 
-  it('should handle empty strings', async () => {
-    const result = await sanitizeHtml('');
-    expect(result).toBe('');
+  it('should handle empty strings', () => {
+    expect(sanitizeHtml('')).toBe('');
   });
 
-  it('should handle non-string inputs', async () => {
-    const result1 = await sanitizeHtml(null as unknown as string);
-    expect(result1).toBe('');
-    const result2 = await sanitizeHtml(undefined as unknown as string);
-    expect(result2).toBe('');
+  it('should handle non-string inputs', () => {
+    expect(sanitizeHtml(null as unknown as string)).toBe('');
+    expect(sanitizeHtml(undefined as unknown as string)).toBe('');
   });
 
-  it('should preserve line breaks as br tags', async () => {
-    const result = await sanitizeHtml('<p>Line 1<br>Line 2</p>');
-    expect(result).toContain('<br>');
+  it('should preserve newlines for later conversion', () => {
+    const result = sanitizeHtml('Line 1\nLine 2');
+    expect(result).toContain('\n');
+    expect(result).toContain('Line 1');
+    expect(result).toContain('Line 2');
   });
 });

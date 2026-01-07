@@ -1,22 +1,71 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Chat, type Message } from '@/components/ui/chat';
+
+const CHAT_STORAGE_KEY = 'shay-azulay-chat-messages';
+const INITIAL_MESSAGE: Message = {
+  id: 'initial',
+  role: 'assistant',
+  content: `Hi 👋 I'm Shay, You can ask me anything! Try to be professional about it 😊`,
+};
+
+/**
+ * Loads messages from sessionStorage
+ * @returns Array of messages or initial message if none found
+ */
+function loadMessagesFromStorage(): Message[] {
+  if (typeof window === 'undefined') {
+    return [INITIAL_MESSAGE];
+  }
+
+  try {
+    const stored = sessionStorage.getItem(CHAT_STORAGE_KEY);
+    if (!stored) {
+      return [INITIAL_MESSAGE];
+    }
+
+    const messages = JSON.parse(stored) as Message[];
+    if (Array.isArray(messages) && messages.length > 0) {
+      return messages;
+    }
+  } catch (error) {
+    console.error('Error loading chat from storage:', error);
+  }
+
+  return [INITIAL_MESSAGE];
+}
+
+/**
+ * Saves messages to sessionStorage
+ * @param messages - Array of messages to save
+ */
+function saveMessagesToStorage(messages: Message[]): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  try {
+    sessionStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
+  } catch (error) {
+    console.error('Error saving chat to storage:', error);
+  }
+}
 
 /**
  * Chat interface component that integrates with the API route
  * Manually manages chat state and communicates with the API
+ * Persists conversation history in sessionStorage
  */
 export function ChatInterface() {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 'initial',
-      role: 'assistant',
-      content: 'Hi 👋, You can ask me anything! Be professional about it...',
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>(loadMessagesFromStorage);
   const [input, setInput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
+
+  // Save messages to sessionStorage whenever they change
+  useEffect(() => {
+    saveMessagesToStorage(messages);
+  }, [messages]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

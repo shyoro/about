@@ -14,8 +14,13 @@
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^3.0.7",
+    "@ai-sdk/react": "^3.0.13",
     "@hookform/resolvers": "^5.2.2",
     "@neondatabase/serverless": "^1.0.2",
+    "@openai/agents": "^0.3.7",
+    "@radix-ui/react-popover": "^1.1.15",
+    "ai": "^6.0.13",
     "drizzle-kit": "^0.31.8",
     "drizzle-orm": "^0.45.1",
     "framer-motion": "^12.23.26",

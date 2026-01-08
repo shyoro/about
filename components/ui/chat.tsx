@@ -35,7 +35,7 @@ export function ChatContainer({ children, className }: { children: React.ReactNo
  */
 export function ChatMessages({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={cn('flex-1 overflow-y-auto p-4 space-y-4', className)}>
+    <div className={cn('flex-1 overflow-y-auto p-4 flex flex-col justify-end', className)}>
       {children}
     </div>
   );
@@ -114,8 +114,8 @@ export function Chat({
               </div>
             ))}
             {isGenerating && (
-              <div className="flex items-end gap-2 justify-start">
-                <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-[var(--color-button-purple)]/30 flex-shrink-0">
+              <div className="flex items-end gap-2 justify-end">
+                <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-(--color-button-purple)/30 shrink-0">
                   <Image
                     src="/shayAzulay.png"
                     alt="Shay Azulay"
@@ -123,11 +123,11 @@ export function Chat({
                     className="object-cover"
                   />
                 </div>
-                <div className="bg-white rounded-lg px-4 py-2 border border-[var(--color-accent-1)]/30 shadow-sm">
+                <div className="bg-white rounded-lg px-4 py-2 border border-(--color-accent-1)/30 shadow-sm">
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-[var(--color-text-secondary)] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <div className="w-2 h-2 bg-[var(--color-text-secondary)] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <div className="w-2 h-2 bg-[var(--color-text-secondary)] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    <div className="w-2 h-2 bg-(--color-text-secondary) rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <div className="w-2 h-2 bg-(--color-text-secondary) rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <div className="w-2 h-2 bg-(--color-text-secondary) rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               </div>

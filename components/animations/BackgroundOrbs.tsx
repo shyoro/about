@@ -1,56 +1,34 @@
-'use client';
-
-import { useEffect, useRef } from 'react';
-
 /**
- * BackgroundOrbs component creates a parallax background effect with two large orbs.
- * It uses direct DOM manipulation via refs for performance, avoiding React re-renders on scroll.
+ * BackgroundOrb component creates a single parallax background orb.
+ * Uses pure CSS scroll-driven animations - no JavaScript required.
+ * Animation is defined in app/globals.css using animation-timeline: scroll()
+ * 
+ * @param orbKey - The orb identifier (1 or 2) used for CSS animation class
+ * @param positionClasses - Tailwind classes for positioning (e.g., "-top-50 -left-25")
+ * @param sizeClasses - Tailwind classes for size (e.g., "w-[80vw] h-[80vw] max-w-300 max-h-300")
+ * @param colorFromVar - CSS variable name for the gradient start color (e.g., "--orb-1-from")
+ * @param colorToVar - CSS variable name for the gradient end color (e.g., "--orb-1-to")
  */
-export function BackgroundOrbs() {
-  const orb1Ref = useRef<HTMLDivElement>(null);
-  const orb2Ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    /**
-     * Updates the transform property of the orbs based on scroll position.
-     * Wrapped in requestAnimationFrame for smooth performance.
-     */
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-
-      window.requestAnimationFrame(() => {
-        if (orb1Ref.current) {
-          orb1Ref.current.style.transform = `translate3d(0, ${scrollY * 0.4}px, 0)`;
-        }
-        
-        if (orb2Ref.current) {
-          orb2Ref.current.style.transform = `translate3d(0, -${scrollY * 0.4}px, 0)`;
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Set initial position
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+export function BackgroundOrb({
+  orbKey,
+  positionClasses,
+  sizeClasses,
+  colorFromVar,
+  colorToVar,
+}: {
+  orbKey: number;
+  positionClasses: string;
+  sizeClasses: string;
+  colorFromVar: string;
+  colorToVar: string;
+}) {
   return (
-    <>
-      <div
-        ref={orb1Ref}
-        className="fixed top-[-200px] left-[-100px] w-[80vw] h-[80vw] max-w-[1200px] max-h-[1200px] rounded-full blur-[120px] opacity-50 z-[-1] will-change-transform mix-blend-multiply bg-[radial-gradient(circle,#E9D5FF_0%,#F3E8FF_100%)]"
-        aria-hidden="true"
-      />
-      <div
-        ref={orb2Ref}
-        className="fixed top-[20%] right-[-100px] w-[90vw] h-[90vw] max-w-[1400px] max-h-[1400px] rounded-full blur-[120px] opacity-50 z-[-1] will-change-transform mix-blend-multiply bg-[radial-gradient(circle,#FED7AA_0%,#FFEDD5_100%)]"
-        aria-hidden="true"
-      />
-    </>
+    <div
+      className={`fixed ${positionClasses} ${sizeClasses} rounded-full blur-[120px] opacity-50 z-[-1] will-change-transform mix-blend-multiply orb-${orbKey}`}
+      style={{
+        background: `radial-gradient(circle, var(${colorFromVar}) 0%, var(${colorToVar}) 100%)`,
+      }}
+      aria-hidden="true"
+    />
   );
 }

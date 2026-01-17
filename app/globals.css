@@ -95,6 +95,12 @@ body {
     overflow-x: hidden;
 }
 
+/* Prevent scrolling when chat popover is open */
+body.chat-popover-open {
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
 /* Smooth scroll with momentum on iOS */
 @supports (-webkit-overflow-scrolling: touch) {
     html {

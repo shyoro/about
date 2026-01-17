@@ -148,21 +148,41 @@ body.chat-popover-open {
 }
 
 /* Background Orbs Scroll Animation - Pure CSS */
+/* Orb 1: Moves in a diagonal down-right pattern with clockwise rotation */
 @keyframes orb1-scroll {
-    from {
-        transform: translate3d(0, 0, 0) rotate(0deg);
+    0% {
+        transform: translate3d(0, 0, 0);
     }
-    to {
-        transform: translate3d(240px, 240px, 0) rotate(108deg);
+    25% {
+        transform: translate3d(200px, 150px, 0);
+    }
+    50% {
+        transform: translate3d(300px, 300px, 0);
+    }
+    75% {
+        transform: translate3d(150px, 400px, 0);
+    }
+    100% {
+        transform: translate3d(400px, 500px, 0);
     }
 }
 
+/* Orb 2: Moves in a contrasting diagonal up-left pattern with counter-clockwise rotation */
 @keyframes orb2-scroll {
-    from {
-        transform: translate3d(0, 0, 0) rotate(0deg);
+    0% {
+        transform: translate3d(0, 0, 0)
     }
-    to {
-        transform: translate3d(-210px, -210px, 0) rotate(-126deg);
+    25% {
+        transform: translate3d(-180px, -120px, 0);
+    }
+    50% {
+        transform: translate3d(-350px, -250px, 0);
+    }
+    75% {
+        transform: translate3d(-200px, -400px, 0);
+    }
+    100% {
+        transform: translate3d(-450px, -500px, 0);
     }
 }
 

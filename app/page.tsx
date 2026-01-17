@@ -17,14 +17,14 @@ export default async function Home() {
       <BackgroundOrb
         orbKey={1}
         positionClasses="-top-50 -left-25"
-        sizeClasses="w-[90vw] h-[90vw] max-w-300 max-h-300"
+        sizeClasses="w-[60vw] h-[60vw] max-w-200 max-h-200"
         colorFromVar="--orb-1-from"
         colorToVar="--orb-1-to"
       />
       <BackgroundOrb
         orbKey={2}
         positionClasses="top-[20%] -right-25"
-        sizeClasses="w-[90vw] h-[90vw] max-w-350 max-h-350"
+        sizeClasses="w-[60vw] h-[60vw] max-w-250 max-h-250"
         colorFromVar="--orb-2-from"
         colorToVar="--orb-2-to"
       />

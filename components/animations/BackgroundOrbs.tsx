@@ -2,7 +2,7 @@
  * BackgroundOrb component creates a single parallax background orb.
  * Uses pure CSS scroll-driven animations - no JavaScript required.
  * Animation is defined in app/globals.css using animation-timeline: scroll()
- * 
+ *
  * @param orbKey - The orb identifier (1 or 2) used for CSS animation class
  * @param positionClasses - Tailwind classes for positioning (e.g., "-top-50 -left-25")
  * @param sizeClasses - Tailwind classes for size (e.g., "w-[80vw] h-[80vw] max-w-300 max-h-300")
